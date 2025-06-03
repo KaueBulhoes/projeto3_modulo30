@@ -7,5 +7,4 @@ import main.dao.generic.IGenericDAO;
 
 public interface IClienteDAO extends IGenericDAO<Cliente, Long> {
 
-
 }
