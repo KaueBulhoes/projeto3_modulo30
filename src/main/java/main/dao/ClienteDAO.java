@@ -20,36 +20,36 @@ public class ClienteDAO extends GenericDAO<Cliente, Long> implements IClienteDAO
 	}
 
 	@Override
-	public void atualiarDados(Cliente entity, Cliente entityCadastrado) {
-		entityCadastrado.setCidade(entity.getCidade());
-		entityCadastrado.setCpf(entity.getCpf());
-		entityCadastrado.setEnd(entity.getEnd());
-		entityCadastrado.setEstado(entity.getEstado());
-		entityCadastrado.setNome(entity.getNome());
-		entityCadastrado.setNumero(entity.getNumero());
-		entityCadastrado.setTel(entity.getTel());
-		
+	public void atualizarDados(Cliente clienteNovo, Cliente clienteDB) {
+		clienteDB.setNome(clienteNovo.getNome());
+		clienteDB.setCpf(clienteNovo.getCpf());
+		clienteDB.setTel(clienteNovo.getTel());
+		clienteDB.setEnd(clienteNovo.getEnd());
+		clienteDB.setNumero(clienteNovo.getNumero());
+		clienteDB.setCidade(clienteNovo.getCidade());
+		clienteDB.setEstado(clienteNovo.getEstado());
+		clienteDB.setEmail(clienteNovo.getEmail());
 	}
 
 	@Override
 	protected String getQueryInsercao() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("INSERT INTO TB_CLIENTE ");
-		sb.append("(ID, NOME, CPF, TEL, ENDERECO, NUMERO, CIDADE, ESTADO)");
-		sb.append("VALUES (nextval('sq_cliente'),?,?,?,?,?,?,?)");
+		sb.append("(ID, NOME, CPF, TEL, ENDERECO, NUMERO, CIDADE, ESTADO, EMAIL)");
+		sb.append("VALUES (nextval('sq_cliente'),?,?,?,?,?,?,?,?)");
 		return sb.toString();
 	}
 
 	@Override
-	protected void setParametrosQueryInsercao(PreparedStatement stmInsert, Cliente entity) throws SQLException {
-		stmInsert.setString(1, entity.getNome());
-		stmInsert.setLong(2, entity.getCpf());
-		stmInsert.setLong(3, entity.getTel());
-		stmInsert.setString(4, entity.getEnd());
-		stmInsert.setLong(5, entity.getNumero());
-		stmInsert.setString(6, entity.getCidade());
-		stmInsert.setString(7, entity.getEstado());
-		
+	protected void setParametrosQueryInsercao(PreparedStatement stmInsert, Cliente clienteNovo) throws SQLException {
+		stmInsert.setString(1, clienteNovo.getNome());
+		stmInsert.setLong(2, clienteNovo.getCpf());
+		stmInsert.setLong(3, clienteNovo.getTel());
+		stmInsert.setString(4, clienteNovo.getEnd());
+		stmInsert.setLong(5, clienteNovo.getNumero());
+		stmInsert.setString(6, clienteNovo.getCidade());
+		stmInsert.setString(7, clienteNovo.getEstado());
+		stmInsert.setString(8, clienteNovo.getEmail());
 	}
 
 	@Override
@@ -72,19 +72,21 @@ public class ClienteDAO extends GenericDAO<Cliente, Long> implements IClienteDAO
 		sb.append("NUMERO = ?,");
 		sb.append("CIDADE = ?,");
 		sb.append("ESTADO = ?");
+		sb.append("EMAIL = ?");
 		sb.append(" WHERE CPF = ?");
 		return sb.toString();
 	}
 
 	@Override
-	protected void setParametrosQueryAtualizacao(PreparedStatement stmUpdate, Cliente entity) throws SQLException {
-		stmUpdate.setString(1, entity.getNome());
-		stmUpdate.setLong(2, entity.getTel());
-		stmUpdate.setString(3, entity.getEnd());
-		stmUpdate.setLong(4, entity.getNumero());
-		stmUpdate.setString(5, entity.getCidade());
-		stmUpdate.setString(6, entity.getEstado());
-		stmUpdate.setLong(7, entity.getCpf());
+	protected void setParametrosQueryAtualizacao(PreparedStatement stmUpdate, Cliente clienteNovo) throws SQLException {
+		stmUpdate.setString(1, clienteNovo.getNome());
+		stmUpdate.setLong(7, clienteNovo.getCpf());
+		stmUpdate.setLong(2, clienteNovo.getTel());
+		stmUpdate.setString(3, clienteNovo.getEnd());
+		stmUpdate.setLong(4, clienteNovo.getNumero());
+		stmUpdate.setString(5, clienteNovo.getCidade());
+		stmUpdate.setString(6, clienteNovo.getEstado());
+		stmUpdate.setString(8, clienteNovo.getEmail());
 	}
 
 	@Override

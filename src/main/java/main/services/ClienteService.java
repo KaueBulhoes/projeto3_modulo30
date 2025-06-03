@@ -5,7 +5,6 @@ import main.domain.Cliente;
 import main.exceptions.DAOException;
 import main.exceptions.MaisDeUmRegistroException;
 import main.exceptions.TableException;
-import main.exceptions.TipoChaveNaoEncontradaException;
 import main.services.generic.GenericService;
 import main.dao.IClienteDAO;
 

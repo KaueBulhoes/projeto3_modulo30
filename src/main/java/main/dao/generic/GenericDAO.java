@@ -33,7 +33,7 @@ public abstract class GenericDAO<T extends Persistente, E extends Serializable> 
 
     public abstract Class<T> getTipoClasse();
 
-    public abstract void atualiarDados(T entity, T entityCadastrado);
+    public abstract void atualizarDados(T entity, T entityCadastrado);
     
     protected abstract String getQueryInsercao();
     

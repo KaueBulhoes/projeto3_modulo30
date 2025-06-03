@@ -3,7 +3,6 @@ package main.services;
 
 import main.domain.Cliente;
 import main.exceptions.DAOException;
-import main.exceptions.TipoChaveNaoEncontradaException;
 import main.services.generic.IGenericService;
 
 
