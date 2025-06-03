@@ -42,7 +42,7 @@ public class EstoqueService implements IEstoqueService {
     }
 
     @Override
-    public Boolean validarDisponibilidade(Long idProduto, Integer quantidade) throws DAOException {
+    public Boolean validarDisponibilidade(String idProduto, Integer quantidade) throws DAOException {
         for (Estoque est : estoqueDAO.buscarTodos()) {
             if (est.getProduto().equals(idProduto) && est.getQuantidade() >= quantidade) {
                 return true;
@@ -52,7 +52,7 @@ public class EstoqueService implements IEstoqueService {
     }
 
     @Override
-    public void debitarEstoque(Long idProduto, Integer quantidade) throws DAOException {
+    public void debitarEstoque(String idProduto, Integer quantidade) throws DAOException {
         for (Estoque est : estoqueDAO.buscarTodos()) {
             if (est.getProduto().equals(idProduto)) {
                 est.setQuantidade(est.getQuantidade() - quantidade);

@@ -14,7 +14,7 @@ public interface IEstoqueService {
 
     void alterar(Estoque estoque) throws TipoChaveNaoEncontradaException, DAOException;
 
-    Boolean validarDisponibilidade(Long idProduto, Integer quantidade) throws DAOException;
+    Boolean validarDisponibilidade(String idProduto, Integer quantidade) throws DAOException;
 
-    void debitarEstoque(Long idProduto, Integer quantidade) throws DAOException;
+    void debitarEstoque(String idProduto, Integer quantidade) throws DAOException;
 }

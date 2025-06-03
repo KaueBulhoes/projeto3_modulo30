@@ -46,6 +46,7 @@ public class ProdutoDAOTest {
 		produto.setDescricao("Produto 1");
 		produto.setNome("Produto 1");
 		produto.setValor(BigDecimal.TEN);
+		produto.setMarca("Marca Teste");
 		produtoDao.cadastrar(produto);
 		return produto;
 	}
@@ -60,6 +61,7 @@ public class ProdutoDAOTest {
 		Assert.assertNotNull(produto);
 		Produto produtoDB = this.produtoDao.consultar(produto.getCodigo());
 		Assert.assertNotNull(produtoDB);
+		Assert.assertEquals("Marca Teste", produtoDB.getMarca());
 		excluir(produtoDB.getCodigo());
 	}
 	
@@ -82,11 +84,11 @@ public class ProdutoDAOTest {
 	@Test
 	public void alterarCliente() throws TipoChaveNaoEncontradaException, DAOException, MaisDeUmRegistroException, TableException {
 		Produto produto = criarProduto("A4");
-		produto.setNome("Rodrigo Pires");
+		produto.setNome("Kaue Bulhoes");
 		produtoDao.alterar(produto);
 		Produto produtoBD = this.produtoDao.consultar(produto.getCodigo());
 		assertNotNull(produtoBD);
-		Assert.assertEquals("Rodrigo Pires", produtoBD.getNome());
+		Assert.assertEquals("Kaue Bulhoes", produtoBD.getNome());
 		
 		excluir(produto.getCodigo());
 		Produto produtoBD1 = this.produtoDao.consultar(produto.getCodigo());

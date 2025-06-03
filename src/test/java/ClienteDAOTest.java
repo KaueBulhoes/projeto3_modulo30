@@ -116,12 +116,12 @@ public class ClienteDAOTest {
 		Cliente clienteConsultado = clienteDao.consultar(cliente.getCpf());
 		Assert.assertNotNull(clienteConsultado);
 		
-		clienteConsultado.setNome("Rodrigo Pires");
+		clienteConsultado.setNome("Kaue Bulhoes");
 		clienteDao.alterar(clienteConsultado);
 		
 		Cliente clienteAlterado = clienteDao.consultar(clienteConsultado.getCpf());
 		Assert.assertNotNull(clienteAlterado);
-		Assert.assertEquals("Rodrigo Pires", clienteAlterado.getNome());
+		Assert.assertEquals("Kaue Bulhoes", clienteAlterado.getNome());
 		
 		clienteDao.excluir(cliente.getCpf());
 		clienteConsultado = clienteDao.consultar(cliente.getCpf());
